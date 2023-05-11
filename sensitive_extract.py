@@ -42,7 +42,7 @@ def extract_sensitive_info():
     sensitive_info = []
     # Extract sensitive information from JS files
     for js_file in js_files:
-        output = subprocess.check_output(f"subjs -u {js_file} | grep -Ei 'password|api|secret|key'", shell=True)
+        output = subprocess.check_output(f"subjs {js_file} | grep -Ei 'password|api|secret|key'", shell=True)
         if output:
             sensitive_info.extend(output.decode().strip().split("\n"))
 
